@@ -1,6 +1,6 @@
-# Job Hunt
+# Job Hunter
 
-Job Hunt is a web application built using Flask that allows users to search for the latest job listings from <a href="https://www.timesjobs.com/">TimesJobs.com</a> based on their skills.
+Job Hunter is a web application built using Flask that allows users to search for the latest job listings from <a href="https://www.timesjobs.com/">TimesJobs.com</a> based on their skills.
 
 ## Features
 
@@ -8,6 +8,12 @@ Job Hunt is a web application built using Flask that allows users to search for 
 - Scrapes the latest job listings from TimesJobs.com.
 - Provides job details including company name and job description.
 - Provides application link for the job.
+
+<img src = "https://github.com/kindo-tk/images/blob/main/job_hunter/search_page.png">
+<br>
+<img src = "https://github.com/kindo-tk/images/blob/main/job_hunter/search_page_querry.png">
+<br>
+<img src = "https://github.com/kindo-tk/images/blob/main/job_hunter/job_result.png">
 
 ## Installation
 
@@ -55,5 +61,18 @@ Job Hunt is a web application built using Flask that allows users to search for 
 
 ## Deployment
 
-You can access the deployed application at the following URL: https://weatherapp-hws1.onrender.com
+You can access the deployed application at the following URL: https://job-hunter-ibgk.onrender.com
+
+## Collaboration
+I am open to collaboration! If you have ideas, suggestions, or improvements, I'd love to hear from you. Feel free to fork the repository and submit pull requests.
+
+## Suggestions and Issues
+If you have any suggestions to enhance the project or encounter any issues, please report them in the Issues section of the repository. Your feedback is valuable to me and helps improve the project.
+
+## Contact Information
+For any inquiries or feedback, please contact:
+
+- <a href="https://www.linkedin.com/in/tufan-kundu-577945221/">Tufan Kundu (LinkedIn)</a>
+- Email: tufan.kundu11@gmail.com
+
 
