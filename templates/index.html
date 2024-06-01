@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Hunter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px; /* Increased padding for a bigger box */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .big-heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007bff; /* Different color for the heading */
+        }
+        .skill-input-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .skill-input-container input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 5px;
+        }
+        .skill-box {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px; /* Increased padding for bigger box */
+            border-radius: 5px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .skill-box span {
+            margin-right: 5px;
+        }
+        .skill-box button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background: #0056b3;
+        }
+        .slogan {
+            margin-top: 20px;
+        }
+        .slogan p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .slogan a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .slogan a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="big-heading">Find jobs according to your skills</h1>
+        <h1>Enter Your Skills</h1>
+        <form action="/results" method="post">
+            <div class="skill-input-container" id="skill-input-container">
+                <input type="text" id="skill-input" placeholder="Type a skill and press comma" autocomplete="off">
+            </div>
+            <input type="hidden" name="skills" id="skills">
+            <button type="submit">Search Jobs</button>
+        </form>
+        <div class="slogan">
+            <p>Made with ❤️ by <a href="https://www.linkedin.com/in/tufan-kundu-577945221/" target="_blank">TK</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const skillInputContainer = document.getElementById('skill-input-container');
+            const skillInput = document.getElementById('skill-input');
+            const skillsHiddenInput = document.getElementById('skills');
+            const skills = [];
+
+            skillInput.addEventListener('keydown', (e) => {
+                if (e.key === ',' || e.key === 'Enter') {
+                    e.preventDefault();
+                    const skill = skillInput.value.trim().replace(',', '');
+                    if (skill) {
+                        addSkill(skill);
+                        skillInput.value = '';
+                    }
+                }
+            });
+
+            skillInputContainer.addEventListener('click', () => {
+                skillInput.focus();
+            });
+
+            function addSkill(skill) {
+                if (!skills.includes(skill)) {
+                    skills.push(skill);
+                    const skillBox = document.createElement('div');
+                    skillBox.className = 'skill-box';
+                    skillBox.innerHTML = `<span>${skill}</span><button onclick="removeSkill('${skill}')">&times;</button>`;
+                    skillInputContainer.insertBefore(skillBox, skillInput);
+                    updateSkillsHiddenInput();
+                }
+            }
+
+            function removeSkill(skill) {
+                const index = skills.indexOf(skill);
+                if (index > -1) {
+                    skills.splice(index, 1);
+                    const skillBoxes = document.querySelectorAll('.skill-box');
+                    skillBoxes.forEach((box) => {
+                        if (box.textContent.trim().startsWith(skill)) {
+                            skillInputContainer.removeChild(box);
+                        }
+                    });
+                    updateSkillsHiddenInput();
+                }
+            }
+
+            window.removeSkill = removeSkill;
+
+            function updateSkillsHiddenInput() {
+                skillsHiddenInput.value = skills.join(',');
+            }
+        });
+    </script>
+</body>
+</html>

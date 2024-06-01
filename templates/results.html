@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-align: center; /* Center the heading */
+        }
+        .job-list {
+            list-style: none;
+            padding: 0;
+        }
+        .job-item {
+            background: #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: background 0.3s;
+        }
+        .job-item:hover {
+            background: #ced4da;
+        }
+        .job-item strong {
+            display: inline-block;
+            width: 150px;
+        }
+        .job-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .job-item a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Results</h1>
+        {% if jobs %}
+            <ul class="job-list">
+                {% for job in jobs %}
+                    <li class="job-item">
+                        <p><strong>Company Name:</strong> {{ job.company_name }}</p>
+                        <p><strong>Skills Needed:</strong> {{ job.skills | join(', ') }}</p>
+                        <p><strong>Job Description:</strong> <a href="{{ job.jd }}" target="_blank">Link</a></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No matching jobs found.</p>
+        {% endif %}
+        <a href="/"><button class="back-button">Go Back</button></a>
+    </div>
+</body>
+</html>
