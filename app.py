@@ -12,9 +12,13 @@ def scrap_jobs(known_skills):
         jobs = soup.find_all('li', class_="clearfix job-bx wht-shd-bx")
         job_list = []
 
+        known_skills = [skill.lower().strip() for skill in known_skills]  # Convert input skills to lowercase
+        
         for job in jobs:
             date_posted = job.find("span", class_='sim-posted').text.strip()
             skills = job.find("span", class_="srp-skills").text.replace(" ", "").strip().split(",")
+            skills = [skill.lower() for skill in skills]  # Convert skills to lowercase
+            
             if set(known_skills) & set(skills):
                 company_name = job.find("h3", class_='joblist-comp-name').text.strip()
                 jd = job.header.h2.a['href']
