@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Results</title>
     <style>
         body {
@@ -24,7 +26,8 @@
         }
         h1 {
             margin-bottom: 20px;
-            text-align: center; /* Center the heading */
+            text-align: center;
+            font-size: 2em;
         }
         .job-list {
             list-style: none;
@@ -60,6 +63,9 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
         }
         .back-button:hover {
             background: #0056b3;
@@ -75,6 +81,7 @@
                     <li class="job-item">
                         <p><strong>Company Name:</strong> {{ job.company_name }}</p>
                         <p><strong>Skills Needed:</strong> {{ job.skills | join(', ') }}</p>
+                        <p><strong>Date Posted:</strong> {{ job.date_posted }}</p>
                         <p><strong>Job Description:</strong> <a href="{{ job.jd }}" target="_blank">Link</a></p>
                     </li>
                 {% endfor %}

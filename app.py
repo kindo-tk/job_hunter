@@ -15,13 +15,14 @@ def scrap_jobs(known_skills):
         for job in jobs:
             date_posted = job.find("span", class_='sim-posted').text.strip()
             skills = job.find("span", class_="srp-skills").text.replace(" ", "").strip().split(",")
-            if 'few' in date_posted and set(known_skills) & set(skills):
+            if set(known_skills) & set(skills):
                 company_name = job.find("h3", class_='joblist-comp-name').text.strip()
                 jd = job.header.h2.a['href']
                 job_list.append({
                     'company_name': company_name,
                     'skills': skills,
-                    'jd': jd
+                    'jd': jd,
+                    'date_posted': date_posted
                 })
 
         return job_list
