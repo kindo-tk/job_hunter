@@ -63,12 +63,16 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
-            display: block;
+            display: inline-block;
             text-align: center;
             text-decoration: none;
         }
         .back-button:hover {
             background: #0056b3;
+        }
+        .back-button:link, .back-button:visited {
+            text-decoration: none;
+            color: white;
         }
     </style>
 </head>
@@ -89,7 +93,7 @@
         {% else %}
             <p>No matching jobs found.</p>
         {% endif %}
-        <a href="/"><button class="back-button">Go Back</button></a>
+        <a href="/" class="back-button">Go Back</a>
     </div>
 </body>
 </html>
