@@ -28,21 +28,24 @@ Job Hunter is a web application built using Flask that allows users to search fo
    cd .\job_hunter\
    ```
    
-3. Activate the virtual environment
+3. Create a virtual environment
 
     ```bash
-    cd .\.venv\Scripts\
-    
-    .\activate
+    python -m venv .venv
+    ```
+4. Activate the virtual environment
+
+    ```bash
+    .venv\Scripts\activate
     ```
 
-4. Install the required dependencies after going back to the `job_hunter` directory (only if the app.py is not running):
+5. Install the required dependencies:
    
     ```bash
     pip install -r requirements.txt
     ```
 
-5. Run the Flask application:
+6. Run the Flask application:
 
     ```bash
     python app.py
